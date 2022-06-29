@@ -6,7 +6,12 @@ const getRedirectUrl = async (shortUrl) => {
     const res = await fetch(`http://localhost:8000/redirect${shortUrl}`);
 
     const data = await res.json();
-    redirectApp(data.url);
+    if (data.url) {
+      console.log({
+        data,
+      });
+      redirectApp(data.url);
+    }
   } catch (error) {
     console.error(error);
   }
